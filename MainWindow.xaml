@@ -7,27 +7,27 @@
         mc:Ignorable="d"
         ResizeMode="NoResize"
         Background="#212121"
-        Title="MainWindow" Height="800" Width="800">
+        Title="Chess" Height="800" Width="800">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="100"/>
-            <RowDefinition Height="100"/>
-            <RowDefinition Height="100"/>
-            <RowDefinition Height="100"/>
-            <RowDefinition Height="100"/>
-            <RowDefinition Height="100"/>
-            <RowDefinition Height="100"/>
-            <RowDefinition Height="100"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="100"/>
-            <ColumnDefinition Width="100"/>
-            <ColumnDefinition Width="100"/>
-            <ColumnDefinition Width="100"/>
-            <ColumnDefinition Width="100"/>
-            <ColumnDefinition Width="100"/>
-            <ColumnDefinition Width="100"/>
-            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
         <Button
@@ -35,448 +35,448 @@
             Grid.Row="0"
             Grid.Column="0"
             Margin="5"
-            Background="White"
+            Background="White" Click="Space00_Click"
             />
         <Button
             x:Name="Space01"
             Grid.Row="0"
             Grid.Column="1"
             Margin="5"
-            Background="White"
+            Background="White" Click="Space01_Click"
             />
         <Button
             x:Name="Space02"
             Grid.Row="0"
             Grid.Column="2"
             Margin="5"
-            Background="White"
+            Background="White" Click="Space02_Click"
             />
         <Button
             x:Name="Space03"
             Grid.Row="0"
             Grid.Column="3"
             Margin="5"
-            Background="White"
+            Background="White" Click="Space03_Click"
             />
         <Button
             x:Name="Space04"
             Grid.Row="0"
             Grid.Column="4"
             Margin="5"
-            Background="White"
+            Background="White" Click="Space04_Click"
             />
         <Button
             x:Name="Space05"
             Grid.Row="0"
             Grid.Column="5"
             Margin="5"
-            Background="White"
+            Background="White" Click="Space05_Click"
             />
         <Button
             x:Name="Space06"
             Grid.Row="0"
             Grid.Column="6"
             Margin="5"
-            Background="White"
+            Background="White" Click="Space06_Click"
             />
         <Button
             x:Name="Space07"
             Grid.Row="0"
             Grid.Column="7"
             Margin="5"
-            Background="White"
+            Background="White" Click="Space07_Click"
             />
         <Button
             x:Name="Space10"
             Grid.Row="1"
             Grid.Column="0"
             Margin="5"
-            Background="White"
+            Background="White" Click="Space10_Click"
             />
         <Button
             x:Name="Space11"
             Grid.Row="1"
             Grid.Column="1"
             Margin="5"
-            Background="White"
+            Background="White" Click="Space11_Click"
             />
         <Button
             x:Name="Space12"
             Grid.Row="1"
             Grid.Column="2"
             Margin="5"
-            Background="White"
+            Background="White" Click="Space12_Click"
             />
         <Button
             x:Name="Space13"
             Grid.Row="1"
             Grid.Column="3"
             Margin="5"
-            Background="White"
+            Background="White" Click="Space13_Click"
             />
         <Button
             x:Name="Space14"
             Grid.Row="1"
             Grid.Column="4"
             Margin="5"
-            Background="White"
+            Background="White" Click="Space14_Click"
             />
         <Button
             x:Name="Space15"
             Grid.Row="1"
             Grid.Column="5"
             Margin="5"
-            Background="White"
+            Background="White" Click="Space15_Click"
             />
         <Button
             x:Name="Space16"
             Grid.Row="1"
             Grid.Column="6"
             Margin="5"
-            Background="White"
+            Background="White" Click="Space16_Click"
             />
         <Button
             x:Name="Space17"
             Grid.Row="1"
             Grid.Column="7"
             Margin="5"
-            Background="White"
+            Background="White" Click="Space17_Click"
             />
         <Button
             x:Name="Space20"
             Grid.Row="2"
             Grid.Column="0"
             Margin="5"
-            Background="White"
+            Background="White" Click="Space20_Click"
             />
         <Button
             x:Name="Space21"
             Grid.Row="2"
             Grid.Column="1"
             Margin="5"
-            Background="White"
+            Background="White" Click="Space21_Click"
             />
         <Button
             x:Name="Space22"
             Grid.Row="2"
             Grid.Column="2"
             Margin="5"
-            Background="White"
+            Background="White" Click="Space22_Click"
             />
         <Button
             x:Name="Space23"
             Grid.Row="2"
             Grid.Column="3"
             Margin="5"
-            Background="White"
+            Background="White" Click="Space23_Click"
             />
         <Button
             x:Name="Space24"
             Grid.Row="2"
             Grid.Column="4"
             Margin="5"
-            Background="White"
+            Background="White" Click="Space24_Click"
             />
         <Button
             x:Name="Space25"
             Grid.Row="2"
             Grid.Column="5"
             Margin="5"
-            Background="White"
+            Background="White" Click="Space25_Click"
             />
         <Button
             x:Name="Space26"
             Grid.Row="2"
             Grid.Column="6"
             Margin="5"
-            Background="White"
+            Background="White" Click="Space26_Click"
             />
         <Button
             x:Name="Space27"
             Grid.Row="2"
             Grid.Column="7"
             Margin="5"
-            Background="White"
+            Background="White" Click="Space27_Click"
             />
         <Button
             x:Name="Space30"
             Grid.Row="3"
             Grid.Column="0"
             Margin="5"
-            Background="White"
+            Background="White" Click="Space30_Click"
             />
         <Button
             x:Name="Space31"
             Grid.Row="3"
             Grid.Column="1"
             Margin="5"
-            Background="White"
+            Background="White" Click="Space31_Click"
             />
         <Button
             x:Name="Space32"
             Grid.Row="3"
             Grid.Column="2"
             Margin="5"
-            Background="White"
+            Background="White" Click="Space32_Click"
             />
         <Button
             x:Name="Space33"
             Grid.Row="3"
             Grid.Column="3"
             Margin="5"
-            Background="White"
+            Background="White" Click="Space33_Click"
             />
         <Button
             x:Name="Space34"
             Grid.Row="3"
             Grid.Column="4"
             Margin="5"
-            Background="White"
+            Background="White" Click="Space34_Click"
             />
         <Button
             x:Name="Space35"
             Grid.Row="3"
             Grid.Column="5"
             Margin="5"
-            Background="White"
+            Background="White" Click="Space35_Click"
             />
         <Button
             x:Name="Space36"
             Grid.Row="3"
             Grid.Column="6"
             Margin="5"
-            Background="White"
+            Background="White" Click="Space36_Click"
             />
         <Button
             x:Name="Space37"
             Grid.Row="3"
             Grid.Column="7"
             Margin="5"
-            Background="White"
+            Background="White" Click="Space37_Click"
             />
         <Button
             x:Name="Space40"
             Grid.Row="4"
             Grid.Column="0"
             Margin="5"
-            Background="White"
+            Background="White" Click="Space40_Click"
             />
         <Button
             x:Name="Space41"
             Grid.Row="4"
             Grid.Column="1"
             Margin="5"
-            Background="White"
+            Background="White" Click="Space41_Click"
             />
         <Button
             x:Name="Space42"
             Grid.Row="4"
             Grid.Column="2"
             Margin="5"
-            Background="White"
+            Background="White" Click="Space42_Click"
             />
         <Button
             x:Name="Space43"
             Grid.Row="4"
             Grid.Column="3"
             Margin="5"
-            Background="White"
+            Background="White" Click="Space43_Click"
             />
         <Button
             x:Name="Space44"
             Grid.Row="4"
             Grid.Column="4"
             Margin="5"
-            Background="White"
+            Background="White" Click="Space44_Click"
             />
         <Button
             x:Name="Space45"
             Grid.Row="4"
             Grid.Column="5"
             Margin="5"
-            Background="White"
+            Background="White" Click="Space45_Click"
             />
         <Button
             x:Name="Space46"
             Grid.Row="4"
             Grid.Column="6"
             Margin="5"
-            Background="White"
+            Background="White" Click="Space46_Click"
             />
         <Button
             x:Name="Space47"
             Grid.Row="4"
             Grid.Column="7"
             Margin="5"
-            Background="White"
+            Background="White" Click="Space47_Click"
             />
         <Button
             x:Name="Space50"
             Grid.Row="5"
             Grid.Column="0"
             Margin="5"
-            Background="White"
+            Background="White" Click="Space50_Click"
             />
         <Button
             x:Name="Space51"
             Grid.Row="5"
             Grid.Column="1"
             Margin="5"
-            Background="White"
+            Background="White" Click="Space51_Click"
             />
         <Button
             x:Name="Space52"
             Grid.Row="5"
             Grid.Column="2"
             Margin="5"
-            Background="White"
+            Background="White" Click="Space52_Click"
             />
         <Button
             x:Name="Space53"
             Grid.Row="5"
             Grid.Column="3"
             Margin="5"
-            Background="White"
+            Background="White" Click="Space53_Click"
             />
         <Button
             x:Name="Space54"
             Grid.Row="5"
             Grid.Column="4"
             Margin="5"
-            Background="White"
+            Background="White" Click="Space54_Click"
             />
         <Button
             x:Name="Space55"
             Grid.Row="5"
             Grid.Column="5"
             Margin="5"
-            Background="White"
+            Background="White" Click="Space55_Click"
             />
         <Button
             x:Name="Space56"
             Grid.Row="5"
             Grid.Column="6"
             Margin="5"
-            Background="White"
+            Background="White" Click="Space56_Click"
             />
         <Button
             x:Name="Space57"
             Grid.Row="5"
             Grid.Column="7"
             Margin="5"
-            Background="White"
+            Background="White" Click="Space57_Click"
             />
         <Button
             x:Name="Space60"
             Grid.Row="6"
             Grid.Column="0"
             Margin="5"
-            Background="White"
+            Background="White" Click="Space60_Click"
             />
         <Button
             x:Name="Space61"
             Grid.Row="6"
             Grid.Column="1"
             Margin="5"
-            Background="White"
+            Background="White" Click="Space61_Click"
             />
         <Button
             x:Name="Space62"
             Grid.Row="6"
             Grid.Column="2"
             Margin="5"
-            Background="White"
+            Background="White" Click="Space62_Click"
             />
         <Button
             x:Name="Space63"
             Grid.Row="6"
             Grid.Column="3"
             Margin="5"
-            Background="White"
+            Background="White" Click="Space63_Click"
             />
         <Button
             x:Name="Space64"
             Grid.Row="6"
             Grid.Column="4"
             Margin="5"
-            Background="White"
+            Background="White" Click="Space64_Click"
             />
         <Button
             x:Name="Space65"
             Grid.Row="6"
             Grid.Column="5"
             Margin="5"
-            Background="White"
+            Background="White" Click="Space65_Click"
             />
         <Button
             x:Name="Space66"
             Grid.Row="6"
             Grid.Column="6"
             Margin="5"
-            Background="White"
+            Background="White" Click="Space66_Click"
             />
         <Button
             x:Name="Space67"
             Grid.Row="6"
             Grid.Column="7"
             Margin="5"
-            Background="White"
+            Background="White" Click="Space67_Click"
             />
         <Button
             x:Name="Space70"
             Grid.Row="7"
             Grid.Column="0"
             Margin="5"
-            Background="White"
+            Background="White" Click="Space70_Click"
             />
         <Button
             x:Name="Space71"
             Grid.Row="7"
             Grid.Column="1"
             Margin="5"
-            Background="White"
+            Background="White" Click="Space71_Click"
             />
         <Button
             x:Name="Space72"
             Grid.Row="7"
             Grid.Column="2"
             Margin="5"
-            Background="White"
+            Background="White" Click="Space72_Click"
             />
         <Button
             x:Name="Space73"
             Grid.Row="7"
             Grid.Column="3"
             Margin="5"
-            Background="White"
+            Background="White" Click="Space73_Click"
             />
         <Button
             x:Name="Space74"
             Grid.Row="7"
             Grid.Column="4"
             Margin="5"
-            Background="White"
+            Background="White" Click="Space74_Click"
             />
         <Button
             x:Name="Space75"
             Grid.Row="7"
             Grid.Column="5"
             Margin="5"
-            Background="White"
+            Background="White" Click="Space75_Click"
             />
         <Button
             x:Name="Space76"
             Grid.Row="7"
             Grid.Column="6"
             Margin="5"
-            Background="White"
+            Background="White" Click="Space76_Click"
             />
         <Button
             x:Name="Space77"
             Grid.Row="7"
             Grid.Column="7"
             Margin="5"
-            Background="White"
+            Background="White" Click="Space77_Click"
             />
 
     </Grid>
