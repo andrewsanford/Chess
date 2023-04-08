@@ -1,4 +1,5 @@
-﻿using Chess.Objects;
+﻿using Chess.Controllers;
+using Chess.Objects;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -22,12 +23,13 @@ namespace Chess
     /// </summary>
     public partial class MainWindow : Window
     {
-        private Button? ActiveButton;
+        private KeyValuePair<int?, int> ActivePiece;
         private List<List<Square>> ActiveBoard;
         private List<List<Button>> BoardButtons;
         private List<KeyValuePair<int, int>> ActivePositions;
         private List<Brush> ActivePositionBrushes;
-        private KeyValuePair<Button, Brush> ActivePiece;
+        private KeyValuePair<Button, Brush> ActiveButton;
+        private BoardController GameController;
 
         public MainWindow()
         {
@@ -36,6 +38,7 @@ namespace Chess
             BoardButtons = new List<List<Button>>();
             ActivePositions = new List<KeyValuePair<int, int>>();
             ActivePositionBrushes = new List<Brush>();
+            GameController = new BoardController(this);
             SetStartingBoard();
         }
 
@@ -81,20 +84,20 @@ namespace Chess
 
         private void Space10_Click(object sender, RoutedEventArgs e)
         {
-            if(ActivePiece.Key == Space10)
+            if(ActiveButton.Key == Space10)
             {
                 CancelMove();
             }
             else
             {
-                ShowMoveOptions(ActiveBoard[1][0].OccupiedPiece.GetValidMoves(ActiveBoard), BoardButtons[1][0]);
+                ShowMoveOptions(ActiveBoard[1][0].OccupiedPiece.GetValidMoves(ActiveBoard), BoardButtons[1][0], new KeyValuePair<int?, int>(1, 0));
             }
             
         }
 
         private void Space11_Click(object sender, RoutedEventArgs e)
         {
-
+            
         }
 
         private void Space12_Click(object sender, RoutedEventArgs e)
@@ -129,7 +132,11 @@ namespace Chess
 
         private void Space20_Click(object sender, RoutedEventArgs e)
         {
-
+            if (ActivePiece.Key != null)
+            {
+                UpdateBoard(GameController.MovePiece(ActiveBoard, new KeyValuePair<int, int>((int)ActivePiece.Key, ActivePiece.Value), new KeyValuePair<int, int>(2, 0)));
+                CancelMove();
+            }
         }
 
         private void Space21_Click(object sender, RoutedEventArgs e)
@@ -367,15 +374,6 @@ namespace Chess
 
         }
 
-        private void GeneralClick(Button selectedButton, int row, int column)
-        {
-            if(ActiveButton == null)
-            {
-                ActiveButton = selectedButton;
-
-            }
-        }
-
         private void SetStartingBoard()
         {
             //button setup
@@ -438,7 +436,7 @@ namespace Chess
             UpdateBoard(ActiveBoard);
         }
 
-        private void ShowMoveOptions(List<KeyValuePair<int, int>> validMoves, Button currentButton)
+        private void ShowMoveOptions(List<KeyValuePair<int, int>> validMoves, Button currentButton, KeyValuePair<int?, int> buttonPosition)
         {
             //disables all buttons
             foreach(List<Button> buttonList in BoardButtons)
@@ -467,8 +465,11 @@ namespace Chess
             }
 
             currentButton.IsEnabled = true;
-            ActivePiece = new KeyValuePair<Button, Brush>(currentButton, currentButton.Background);
+            ActiveButton = new KeyValuePair<Button, Brush>(currentButton, currentButton.Background);
             currentButton.Background = new SolidColorBrush(Colors.LightGreen);
+
+            //set active piece
+            ActivePiece = buttonPosition;
         }
 
         private void CancelMove()
@@ -488,12 +489,13 @@ namespace Chess
                 BoardButtons[ActivePositions[i].Key][ActivePositions[i].Value].Background = ActivePositionBrushes[i];
             }
 
-            ActivePiece.Key.Background = ActivePiece.Value;
+            ActiveButton.Key.Background = ActiveButton.Value;
 
             //clear variables
             ActivePositions.Clear();
             ActivePositionBrushes.Clear();
-            ActivePiece = new KeyValuePair<Button, Brush>();
+            ActiveButton = new KeyValuePair<Button, Brush>();
+            ActivePiece = new KeyValuePair<int?, int>();
         }
 
         public void UpdateBoard(List<List<Square>> board)
