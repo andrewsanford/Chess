@@ -7,14 +7,18 @@ using System.Threading.Tasks;
 namespace Chess.Objects
 {
     public enum Color { WHITE, BLACK}
-    public class Piece
+    public abstract class Piece
     {
         public Color PieceColor;
-        public Square CurrentSquare;
+        public KeyValuePair<int, int> CurrentPosition;
+        public string PieceImage = "";
 
-        public List<KeyValuePair<int, int>> GetValidMoves(List<Square> squares)
+        public Piece(Color pieceColor, KeyValuePair<int, int> currentPosition)
         {
-            return new List<KeyValuePair<int, int>>();
+            PieceColor = pieceColor;
+            CurrentPosition = currentPosition;
         }
-    }
+
+        public abstract List<KeyValuePair<int, int>> GetValidMoves(List<List<Square>> board);  
+}
 }

@@ -42,7 +42,7 @@
             Grid.Row="0"
             Grid.Column="1"
             Margin="5"
-            Background="White" Click="Space01_Click"
+            Background="#999797" Click="Space01_Click"
             />
         <Button
             x:Name="Space02"
@@ -56,7 +56,7 @@
             Grid.Row="0"
             Grid.Column="3"
             Margin="5"
-            Background="White" Click="Space03_Click"
+            Background="#999797" Click="Space03_Click"
             />
         <Button
             x:Name="Space04"
@@ -70,7 +70,7 @@
             Grid.Row="0"
             Grid.Column="5"
             Margin="5"
-            Background="White" Click="Space05_Click"
+            Background="#999797" Click="Space05_Click"
             />
         <Button
             x:Name="Space06"
@@ -84,14 +84,14 @@
             Grid.Row="0"
             Grid.Column="7"
             Margin="5"
-            Background="White" Click="Space07_Click"
+            Background="#999797" Click="Space07_Click"
             />
         <Button
             x:Name="Space10"
             Grid.Row="1"
             Grid.Column="0"
             Margin="5"
-            Background="White" Click="Space10_Click"
+            Background="#999797" Click="Space10_Click"
             />
         <Button
             x:Name="Space11"
@@ -105,7 +105,7 @@
             Grid.Row="1"
             Grid.Column="2"
             Margin="5"
-            Background="White" Click="Space12_Click"
+            Background="#999797" Click="Space12_Click"
             />
         <Button
             x:Name="Space13"
@@ -119,7 +119,7 @@
             Grid.Row="1"
             Grid.Column="4"
             Margin="5"
-            Background="White" Click="Space14_Click"
+            Background="#999797" Click="Space14_Click"
             />
         <Button
             x:Name="Space15"
@@ -133,7 +133,7 @@
             Grid.Row="1"
             Grid.Column="6"
             Margin="5"
-            Background="White" Click="Space16_Click"
+            Background="#999797" Click="Space16_Click"
             />
         <Button
             x:Name="Space17"
@@ -154,7 +154,7 @@
             Grid.Row="2"
             Grid.Column="1"
             Margin="5"
-            Background="White" Click="Space21_Click"
+            Background="#999797" Click="Space21_Click"
             />
         <Button
             x:Name="Space22"
@@ -168,7 +168,7 @@
             Grid.Row="2"
             Grid.Column="3"
             Margin="5"
-            Background="White" Click="Space23_Click"
+            Background="#999797" Click="Space23_Click"
             />
         <Button
             x:Name="Space24"
@@ -182,7 +182,7 @@
             Grid.Row="2"
             Grid.Column="5"
             Margin="5"
-            Background="White" Click="Space25_Click"
+            Background="#999797" Click="Space25_Click"
             />
         <Button
             x:Name="Space26"
@@ -196,14 +196,14 @@
             Grid.Row="2"
             Grid.Column="7"
             Margin="5"
-            Background="White" Click="Space27_Click"
+            Background="#999797" Click="Space27_Click"
             />
         <Button
             x:Name="Space30"
             Grid.Row="3"
             Grid.Column="0"
             Margin="5"
-            Background="White" Click="Space30_Click"
+            Background="#999797" Click="Space30_Click"
             />
         <Button
             x:Name="Space31"
@@ -217,7 +217,7 @@
             Grid.Row="3"
             Grid.Column="2"
             Margin="5"
-            Background="White" Click="Space32_Click"
+            Background="#999797" Click="Space32_Click"
             />
         <Button
             x:Name="Space33"
@@ -231,7 +231,7 @@
             Grid.Row="3"
             Grid.Column="4"
             Margin="5"
-            Background="White" Click="Space34_Click"
+            Background="#999797" Click="Space34_Click"
             />
         <Button
             x:Name="Space35"
@@ -245,7 +245,7 @@
             Grid.Row="3"
             Grid.Column="6"
             Margin="5"
-            Background="White" Click="Space36_Click"
+            Background="#999797" Click="Space36_Click"
             />
         <Button
             x:Name="Space37"
@@ -266,7 +266,7 @@
             Grid.Row="4"
             Grid.Column="1"
             Margin="5"
-            Background="White" Click="Space41_Click"
+            Background="#999797" Click="Space41_Click"
             />
         <Button
             x:Name="Space42"
@@ -280,7 +280,7 @@
             Grid.Row="4"
             Grid.Column="3"
             Margin="5"
-            Background="White" Click="Space43_Click"
+            Background="#999797" Click="Space43_Click"
             />
         <Button
             x:Name="Space44"
@@ -294,7 +294,7 @@
             Grid.Row="4"
             Grid.Column="5"
             Margin="5"
-            Background="White" Click="Space45_Click"
+            Background="#999797" Click="Space45_Click"
             />
         <Button
             x:Name="Space46"
@@ -308,14 +308,14 @@
             Grid.Row="4"
             Grid.Column="7"
             Margin="5"
-            Background="White" Click="Space47_Click"
+            Background="#999797" Click="Space47_Click"
             />
         <Button
             x:Name="Space50"
             Grid.Row="5"
             Grid.Column="0"
             Margin="5"
-            Background="White" Click="Space50_Click"
+            Background="#999797" Click="Space50_Click"
             />
         <Button
             x:Name="Space51"
@@ -329,7 +329,7 @@
             Grid.Row="5"
             Grid.Column="2"
             Margin="5"
-            Background="White" Click="Space52_Click"
+            Background="#999797" Click="Space52_Click"
             />
         <Button
             x:Name="Space53"
@@ -343,7 +343,7 @@
             Grid.Row="5"
             Grid.Column="4"
             Margin="5"
-            Background="White" Click="Space54_Click"
+            Background="#999797" Click="Space54_Click"
             />
         <Button
             x:Name="Space55"
@@ -357,7 +357,7 @@
             Grid.Row="5"
             Grid.Column="6"
             Margin="5"
-            Background="White" Click="Space56_Click"
+            Background="#999797" Click="Space56_Click"
             />
         <Button
             x:Name="Space57"
@@ -378,7 +378,7 @@
             Grid.Row="6"
             Grid.Column="1"
             Margin="5"
-            Background="White" Click="Space61_Click"
+            Background="#999797" Click="Space61_Click"
             />
         <Button
             x:Name="Space62"
@@ -392,7 +392,7 @@
             Grid.Row="6"
             Grid.Column="3"
             Margin="5"
-            Background="White" Click="Space63_Click"
+            Background="#999797" Click="Space63_Click"
             />
         <Button
             x:Name="Space64"
@@ -406,7 +406,7 @@
             Grid.Row="6"
             Grid.Column="5"
             Margin="5"
-            Background="White" Click="Space65_Click"
+            Background="#999797" Click="Space65_Click"
             />
         <Button
             x:Name="Space66"
@@ -420,14 +420,14 @@
             Grid.Row="6"
             Grid.Column="7"
             Margin="5"
-            Background="White" Click="Space67_Click"
+            Background="#999797" Click="Space67_Click"
             />
         <Button
             x:Name="Space70"
             Grid.Row="7"
             Grid.Column="0"
             Margin="5"
-            Background="White" Click="Space70_Click"
+            Background="#999797" Click="Space70_Click"
             />
         <Button
             x:Name="Space71"
@@ -441,7 +441,7 @@
             Grid.Row="7"
             Grid.Column="2"
             Margin="5"
-            Background="White" Click="Space72_Click"
+            Background="#999797" Click="Space72_Click"
             />
         <Button
             x:Name="Space73"
@@ -455,7 +455,7 @@
             Grid.Row="7"
             Grid.Column="4"
             Margin="5"
-            Background="White" Click="Space74_Click"
+            Background="#999797" Click="Space74_Click"
             />
         <Button
             x:Name="Space75"
@@ -469,7 +469,7 @@
             Grid.Row="7"
             Grid.Column="6"
             Margin="5"
-            Background="White" Click="Space76_Click"
+            Background="#999797" Click="Space76_Click"
             />
         <Button
             x:Name="Space77"

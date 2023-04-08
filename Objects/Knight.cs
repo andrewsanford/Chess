@@ -6,27 +6,21 @@ using System.Threading.Tasks;
 
 namespace Chess.Objects
 {
-    public class King : Piece
+    public class Knight : Piece
     {
-
-        public King(Color pieceColor, KeyValuePair<int, int> currentPosition) : base(pieceColor, currentPosition)
+        public Knight(Color pieceColor, KeyValuePair<int, int> currentPosition) : base(pieceColor, currentPosition)
         {
             PieceColor = pieceColor;
             CurrentPosition = currentPosition;
 
             if (pieceColor == Color.WHITE)
             {
-                PieceImage = "Resources/WhiteKing.png";
+                PieceImage = "Resources/WhiteKnight.png";
             }
             else
             {
-                PieceImage = "Resources/BlackKing.png";
+                PieceImage = "Resources/BlackKnight.png";
             }
-        }
-
-        public List<KeyValuePair<int, int>> GetValidMoves(List<Square> squares)
-        {
-            return new List<KeyValuePair<int, int>>();
         }
 
         public override List<KeyValuePair<int, int>> GetValidMoves(List<List<Square>> board)
