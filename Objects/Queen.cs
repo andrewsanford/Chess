@@ -158,6 +158,7 @@ namespace Chess.Objects
                 if (board[CurrentPosition.Key - i][CurrentPosition.Value + i].OccupiedPiece == null)
                 {
                     returnList.Add(new KeyValuePair<int, int>(CurrentPosition.Key - i, CurrentPosition.Value + i));
+                    i++;
                     continue;
                 }
 
@@ -171,8 +172,6 @@ namespace Chess.Objects
                 {
                     break;
                 }
-
-                i++;
             }
 
             return returnList;
@@ -189,6 +188,7 @@ namespace Chess.Objects
                 if (board[CurrentPosition.Key + i][CurrentPosition.Value + i].OccupiedPiece == null)
                 {
                     returnList.Add(new KeyValuePair<int, int>(CurrentPosition.Key + i, CurrentPosition.Value + i));
+                    i++;
                     continue;
                 }
 
@@ -202,8 +202,6 @@ namespace Chess.Objects
                 {
                     break;
                 }
-
-                i++;
             }
 
             return returnList;
@@ -220,6 +218,7 @@ namespace Chess.Objects
                 if (board[CurrentPosition.Key + i][CurrentPosition.Value - i].OccupiedPiece == null)
                 {
                     returnList.Add(new KeyValuePair<int, int>(CurrentPosition.Key + i, CurrentPosition.Value - i));
+                    i++;
                     continue;
                 }
 
@@ -233,8 +232,6 @@ namespace Chess.Objects
                 {
                     break;
                 }
-
-                i++;
             }
 
             return returnList;
@@ -251,6 +248,7 @@ namespace Chess.Objects
                 if (board[CurrentPosition.Key - i][CurrentPosition.Value - i].OccupiedPiece == null)
                 {
                     returnList.Add(new KeyValuePair<int, int>(CurrentPosition.Key - i, CurrentPosition.Value - i));
+                    i++;
                     continue;
                 }
 
@@ -264,8 +262,6 @@ namespace Chess.Objects
                 {
                     break;
                 }
-
-                i++;
             }
 
             return returnList;

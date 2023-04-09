@@ -29,36 +29,42 @@ namespace Chess.Objects
 
             if (PieceColor == Color.WHITE)
             {
-                if ((CurrentPosition.Key - 1) >= 0 && board[CurrentPosition.Key - 1][CurrentPosition.Value].OccupiedPiece == null)
+                //check north
+                if((CurrentPosition.Key - 1) >= 0 && board[CurrentPosition.Key - 1][CurrentPosition.Value].OccupiedPiece == null)
                 {
                     returnList.Add(new KeyValuePair<int, int>(CurrentPosition.Key - 1, CurrentPosition.Value));
                 }
 
-                if ((CurrentPosition.Key - 1) >= 0 && CurrentPosition.Value - 1 >= 0 && board[CurrentPosition.Key - 1][CurrentPosition.Value - 1].OccupiedPiece != null && board[CurrentPosition.Key - 1][CurrentPosition.Value - 1].OccupiedPiece.PieceColor == Color.BLACK)
-                {
-                    returnList.Add(new KeyValuePair<int, int>(CurrentPosition.Key - 1, CurrentPosition.Value - 1));
-                }
-
-                if ((CurrentPosition.Value + 1) <= 7 && CurrentPosition.Key - 1 >= 0 && board[CurrentPosition.Key - 1][CurrentPosition.Value + 1].OccupiedPiece != null && board[CurrentPosition.Key - 1][CurrentPosition.Value + 1].OccupiedPiece.PieceColor == Color.BLACK)
+                //check enemy northeast
+                if((CurrentPosition.Key - 1) >= 0 && (CurrentPosition.Value + 1) <= 7 && board[CurrentPosition.Key - 1][CurrentPosition.Value + 1].OccupiedPiece != null && board[CurrentPosition.Key - 1][CurrentPosition.Value + 1].OccupiedPiece.PieceColor == Color.BLACK)
                 {
                     returnList.Add(new KeyValuePair<int, int>(CurrentPosition.Key - 1, CurrentPosition.Value + 1));
+                }
+
+                //check enemy northwest
+                if ((CurrentPosition.Key - 1) >= 0 && (CurrentPosition.Value - 1) >= 0 && board[CurrentPosition.Key - 1][CurrentPosition.Value - 1].OccupiedPiece != null && board[CurrentPosition.Key - 1][CurrentPosition.Value - 1].OccupiedPiece.PieceColor == Color.BLACK)
+                {
+                    returnList.Add(new KeyValuePair<int, int>(CurrentPosition.Key - 1, CurrentPosition.Value - 1));
                 }
             }
             else
             {
-                if ((CurrentPosition.Key + 1) <= 7 && board[CurrentPosition.Key + 1][CurrentPosition.Value].OccupiedPiece == null)
+                //check south
+                if((CurrentPosition.Key + 1) <= 7 && board[CurrentPosition.Key + 1][CurrentPosition.Value].OccupiedPiece == null)
                 {
                     returnList.Add(new KeyValuePair<int, int>(CurrentPosition.Key + 1, CurrentPosition.Value));
                 }
 
-                if ((CurrentPosition.Value - 1) >= 0 && CurrentPosition.Key + 1 <= 7 && board[CurrentPosition.Key + 1][CurrentPosition.Value - 1].OccupiedPiece != null && board[CurrentPosition.Key + 1][CurrentPosition.Value - 1].OccupiedPiece.PieceColor == Color.WHITE)
-                {
-                    returnList.Add(new KeyValuePair<int, int>(CurrentPosition.Key - 1, CurrentPosition.Value + 1));
-                }
-
-                if ((CurrentPosition.Key + 1) <= 7 && CurrentPosition.Value + 1 <= 7 && board[CurrentPosition.Key + 1][CurrentPosition.Value + 1].OccupiedPiece != null && board[CurrentPosition.Key + 1][CurrentPosition.Value + 1].OccupiedPiece.PieceColor == Color.WHITE)
+                //check enemy southeast
+                if((CurrentPosition.Key + 1) <= 7 && (CurrentPosition.Value + 1) <= 7 && board[CurrentPosition.Key + 1][CurrentPosition.Value + 1].OccupiedPiece != null && board[CurrentPosition.Key + 1][CurrentPosition.Value + 1].OccupiedPiece.PieceColor == Color.WHITE)
                 {
                     returnList.Add(new KeyValuePair<int, int>(CurrentPosition.Key + 1, CurrentPosition.Value + 1));
+                }
+
+                //check enemy southwest
+                if ((CurrentPosition.Key + 1) <= 7 && (CurrentPosition.Value - 1) >= 0 && board[CurrentPosition.Key + 1][CurrentPosition.Value - 1].OccupiedPiece != null && board[CurrentPosition.Key + 1][CurrentPosition.Value - 1].OccupiedPiece.PieceColor == Color.WHITE)
+                {
+                    returnList.Add(new KeyValuePair<int, int>(CurrentPosition.Key + 1, CurrentPosition.Value - 1));
                 }
             }
 

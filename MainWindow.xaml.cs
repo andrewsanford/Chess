@@ -44,334 +44,322 @@ namespace Chess
 
         private void Space00_Click(object sender, RoutedEventArgs e)
         {
-
+            GeneralClick(Space00, new KeyValuePair<int, int>(0, 0));
         }
 
         private void Space01_Click(object sender, RoutedEventArgs e)
         {
-
+            GeneralClick(Space01, new KeyValuePair<int, int>(0, 1));
         }
 
         private void Space02_Click(object sender, RoutedEventArgs e)
         {
-
+            GeneralClick(Space02, new KeyValuePair<int, int>(0, 2));
         }
 
         private void Space03_Click(object sender, RoutedEventArgs e)
         {
-
+            GeneralClick(Space03, new KeyValuePair<int, int>(0, 3));
         }
 
         private void Space04_Click(object sender, RoutedEventArgs e)
         {
-
+            GeneralClick(Space04, new KeyValuePair<int, int>(0, 4));
         }
 
         private void Space05_Click(object sender, RoutedEventArgs e)
         {
-
+            GeneralClick(Space05, new KeyValuePair<int, int>(0, 5));
         }
 
         private void Space06_Click(object sender, RoutedEventArgs e)
         {
-
+            GeneralClick(Space06, new KeyValuePair<int, int>(0, 6));
         }
 
         private void Space07_Click(object sender, RoutedEventArgs e)
         {
-
+            GeneralClick(Space07, new KeyValuePair<int, int>(0, 7));
         }
 
         private void Space10_Click(object sender, RoutedEventArgs e)
         {
-            if(ActiveButton.Key == Space10)
-            {
-                CancelMove();
-            }
-            else
-            {
-                ShowMoveOptions(ActiveBoard[1][0].OccupiedPiece.GetValidMoves(ActiveBoard), BoardButtons[1][0], new KeyValuePair<int?, int>(1, 0));
-            }
-            
+            GeneralClick(Space10, new KeyValuePair<int, int>(1, 0));
         }
 
         private void Space11_Click(object sender, RoutedEventArgs e)
         {
-            
+            GeneralClick(Space11, new KeyValuePair<int, int>(1, 1));
         }
 
         private void Space12_Click(object sender, RoutedEventArgs e)
         {
-
+            GeneralClick(Space12, new KeyValuePair<int, int>(1, 2));
         }
 
         private void Space13_Click(object sender, RoutedEventArgs e)
         {
-
+            GeneralClick(Space13, new KeyValuePair<int, int>(1, 3));
         }
 
         private void Space14_Click(object sender, RoutedEventArgs e)
         {
-
+            GeneralClick(Space14, new KeyValuePair<int, int>(1, 4));
         }
 
         private void Space15_Click(object sender, RoutedEventArgs e)
         {
-
+            GeneralClick(Space15, new KeyValuePair<int, int>(1, 5));
         }
 
         private void Space16_Click(object sender, RoutedEventArgs e)
         {
-
+            GeneralClick(Space16, new KeyValuePair<int, int>(1, 6));
         }
 
         private void Space17_Click(object sender, RoutedEventArgs e)
         {
-
+            GeneralClick(Space17, new KeyValuePair<int, int>(1, 7));
         }
 
         private void Space20_Click(object sender, RoutedEventArgs e)
         {
-            if (ActivePiece.Key != null)
-            {
-                UpdateBoard(GameController.MovePiece(ActiveBoard, new KeyValuePair<int, int>((int)ActivePiece.Key, ActivePiece.Value), new KeyValuePair<int, int>(2, 0)));
-                CancelMove();
-            }
+            GeneralClick(Space20, new KeyValuePair<int, int>(2, 0));
         }
 
         private void Space21_Click(object sender, RoutedEventArgs e)
         {
-
+            GeneralClick(Space21, new KeyValuePair<int, int>(2, 1));
         }
 
         private void Space22_Click(object sender, RoutedEventArgs e)
         {
-
+            GeneralClick(Space22, new KeyValuePair<int, int>(2, 2));
         }
 
         private void Space23_Click(object sender, RoutedEventArgs e)
         {
-
+            GeneralClick(Space23, new KeyValuePair<int, int>(2, 3));
         }
 
         private void Space24_Click(object sender, RoutedEventArgs e)
         {
-
+            GeneralClick(Space24, new KeyValuePair<int, int>(2, 4));
         }
 
         private void Space25_Click(object sender, RoutedEventArgs e)
         {
-
+            GeneralClick(Space25, new KeyValuePair<int, int>(2, 5));
         }
 
         private void Space26_Click(object sender, RoutedEventArgs e)
         {
-
+            GeneralClick(Space26, new KeyValuePair<int, int>(2, 6));
         }
 
         private void Space27_Click(object sender, RoutedEventArgs e)
         {
-
+            GeneralClick(Space27, new KeyValuePair<int, int>(2, 7));
         }
 
         private void Space30_Click(object sender, RoutedEventArgs e)
         {
-
+            GeneralClick(Space30, new KeyValuePair<int, int>(3, 0));
         }
 
         private void Space31_Click(object sender, RoutedEventArgs e)
         {
-
+            GeneralClick(Space31, new KeyValuePair<int, int>(3, 1));
         }
 
         private void Space32_Click(object sender, RoutedEventArgs e)
         {
-
+            GeneralClick(Space32, new KeyValuePair<int, int>(3, 2));
         }
 
         private void Space33_Click(object sender, RoutedEventArgs e)
         {
-
+            GeneralClick(Space33, new KeyValuePair<int, int>(3, 3));
         }
 
         private void Space34_Click(object sender, RoutedEventArgs e)
         {
-
+            GeneralClick(Space34, new KeyValuePair<int, int>(3, 4));
         }
 
         private void Space35_Click(object sender, RoutedEventArgs e)
         {
-
+            GeneralClick(Space35, new KeyValuePair<int, int>(3, 5));
         }
 
         private void Space36_Click(object sender, RoutedEventArgs e)
         {
-
+            GeneralClick(Space36, new KeyValuePair<int, int>(3, 6));
         }
 
         private void Space37_Click(object sender, RoutedEventArgs e)
         {
-
+            GeneralClick(Space37, new KeyValuePair<int, int>(3, 7));
         }
 
         private void Space40_Click(object sender, RoutedEventArgs e)
         {
-
+            GeneralClick(Space40, new KeyValuePair<int, int>(4, 0));
         }
 
         private void Space41_Click(object sender, RoutedEventArgs e)
         {
-
+            GeneralClick(Space41, new KeyValuePair<int, int>(4, 1));
         }
 
         private void Space42_Click(object sender, RoutedEventArgs e)
         {
-
+            GeneralClick(Space42, new KeyValuePair<int, int>(4, 2));
         }
 
         private void Space43_Click(object sender, RoutedEventArgs e)
         {
-
+            GeneralClick(Space43, new KeyValuePair<int, int>(4, 3));
         }
 
         private void Space44_Click(object sender, RoutedEventArgs e)
         {
-
+            GeneralClick(Space44, new KeyValuePair<int, int>(4, 4));
         }
 
         private void Space45_Click(object sender, RoutedEventArgs e)
         {
-
+            GeneralClick(Space45, new KeyValuePair<int, int>(4, 5));
         }
 
         private void Space46_Click(object sender, RoutedEventArgs e)
         {
-
+            GeneralClick(Space46, new KeyValuePair<int, int>(4, 6));
         }
 
         private void Space47_Click(object sender, RoutedEventArgs e)
         {
-
+            GeneralClick(Space47, new KeyValuePair<int, int>(4, 7));
         }
 
         private void Space50_Click(object sender, RoutedEventArgs e)
         {
-
+            GeneralClick(Space50, new KeyValuePair<int, int>(5, 0));
         }
 
         private void Space51_Click(object sender, RoutedEventArgs e)
         {
-
+            GeneralClick(Space51, new KeyValuePair<int, int>(5, 1));
         }
 
         private void Space52_Click(object sender, RoutedEventArgs e)
         {
-
+            GeneralClick(Space52, new KeyValuePair<int, int>(5, 2));
         }
 
         private void Space53_Click(object sender, RoutedEventArgs e)
         {
-
+            GeneralClick(Space53, new KeyValuePair<int, int>(5, 3));
         }
 
         private void Space54_Click(object sender, RoutedEventArgs e)
         {
-
+            GeneralClick(Space54, new KeyValuePair<int, int>(5, 4));
         }
 
         private void Space55_Click(object sender, RoutedEventArgs e)
         {
-
+            GeneralClick(Space55, new KeyValuePair<int, int>(5, 5));
         }
 
         private void Space56_Click(object sender, RoutedEventArgs e)
         {
-
+            GeneralClick(Space56, new KeyValuePair<int, int>(5, 6));
         }
 
         private void Space57_Click(object sender, RoutedEventArgs e)
         {
-
+            GeneralClick(Space57, new KeyValuePair<int, int>(5, 7));
         }
 
         private void Space60_Click(object sender, RoutedEventArgs e)
         {
-
+            GeneralClick(Space60, new KeyValuePair<int, int>(6, 0));
         }
 
         private void Space61_Click(object sender, RoutedEventArgs e)
         {
-
+            GeneralClick(Space61, new KeyValuePair<int, int>(6, 1));
         }
 
         private void Space62_Click(object sender, RoutedEventArgs e)
         {
-
+            GeneralClick(Space62, new KeyValuePair<int, int>(6, 2));
         }
 
         private void Space63_Click(object sender, RoutedEventArgs e)
         {
-
+            GeneralClick(Space63, new KeyValuePair<int, int>(6, 3));
         }
 
         private void Space64_Click(object sender, RoutedEventArgs e)
         {
-
+            GeneralClick(Space64, new KeyValuePair<int, int>(6, 4));
         }
 
         private void Space65_Click(object sender, RoutedEventArgs e)
         {
-
+            GeneralClick(Space65, new KeyValuePair<int, int>(6, 5));
         }
 
         private void Space66_Click(object sender, RoutedEventArgs e)
         {
-
+            GeneralClick(Space66, new KeyValuePair<int, int>(6, 6));
         }
 
         private void Space67_Click(object sender, RoutedEventArgs e)
         {
-
+            GeneralClick(Space67, new KeyValuePair<int, int>(6, 7));
         }
 
         private void Space70_Click(object sender, RoutedEventArgs e)
         {
-
+            GeneralClick(Space70, new KeyValuePair<int, int>(7, 0));
         }
 
         private void Space71_Click(object sender, RoutedEventArgs e)
         {
-
+            GeneralClick(Space71, new KeyValuePair<int, int>(7, 1));
         }
 
         private void Space72_Click(object sender, RoutedEventArgs e)
         {
-
+            GeneralClick(Space72, new KeyValuePair<int, int>(7, 2));
         }
 
         private void Space73_Click(object sender, RoutedEventArgs e)
         {
-
+            GeneralClick(Space73, new KeyValuePair<int, int>(7, 3));
         }
 
         private void Space74_Click(object sender, RoutedEventArgs e)
         {
-
+            GeneralClick(Space74, new KeyValuePair<int, int>(7, 4));
         }
 
         private void Space75_Click(object sender, RoutedEventArgs e)
         {
-
+            GeneralClick(Space75, new KeyValuePair<int, int>(7, 5));
         }
 
         private void Space76_Click(object sender, RoutedEventArgs e)
         {
-
+            GeneralClick(Space76, new KeyValuePair<int, int>(7, 6));
         }
 
         private void Space77_Click(object sender, RoutedEventArgs e)
         {
-
+            GeneralClick(Space77, new KeyValuePair<int, int>(7, 7));
         }
 
         private void SetStartingBoard()
@@ -434,6 +422,27 @@ namespace Chess
             ActiveBoard[6][7].OccupiedPiece = new Pawn(Objects.Color.WHITE, new KeyValuePair<int, int>(6, 7));
 
             UpdateBoard(ActiveBoard);
+        }
+
+        private void GeneralClick(Button button, KeyValuePair<int, int> position)
+        {
+            if (ActiveButton.Key == button)
+            {
+                CancelMove();
+            }
+            else if (ActivePiece.Key != null)
+            {
+                UpdateBoard(GameController.MovePiece(ActiveBoard, new KeyValuePair<int, int>((int)ActivePiece.Key, ActivePiece.Value), new KeyValuePair<int, int>(position.Key, position.Value)));
+                CancelMove();
+            }
+            else if(ActiveBoard[position.Key][position.Value].OccupiedPiece == null)
+            {
+                return;
+            }
+            else
+            {
+                ShowMoveOptions(ActiveBoard[position.Key][position.Value].OccupiedPiece.GetValidMoves(ActiveBoard), BoardButtons[position.Key][position.Value], new KeyValuePair<int?, int>(position.Key, position.Value));
+            }
         }
 
         private void ShowMoveOptions(List<KeyValuePair<int, int>> validMoves, Button currentButton, KeyValuePair<int?, int> buttonPosition)

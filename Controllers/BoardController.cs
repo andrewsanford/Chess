@@ -18,6 +18,7 @@ namespace Chess.Controllers
         public List<List<Square>> MovePiece(List<List<Square>> board, KeyValuePair<int, int> startingPosition, KeyValuePair<int, int> endingPosition)
         {
             board[endingPosition.Key][endingPosition.Value].OccupiedPiece = board[startingPosition.Key][startingPosition.Value].OccupiedPiece;
+            board[endingPosition.Key][endingPosition.Value].OccupiedPiece.CurrentPosition = endingPosition;
             board[startingPosition.Key][startingPosition.Value].OccupiedPiece = null;
 
             return board;
