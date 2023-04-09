@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Chess.Objects
 {
+    [Serializable]
     public class King : Piece
     {
 
@@ -13,6 +14,7 @@ namespace Chess.Objects
         {
             PieceColor = pieceColor;
             CurrentPosition = currentPosition;
+            Weight = 900;
 
             if (pieceColor == Color.WHITE)
             {

@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 
 namespace Chess.Objects
 {
+    [Serializable]
     public class Queen : Piece
     {
         public Queen(Color pieceColor, KeyValuePair<int, int> currentPosition) : base(pieceColor, currentPosition)
         {
             PieceColor = pieceColor;
             CurrentPosition = currentPosition;
+            Weight = 90;
 
             if (pieceColor == Color.WHITE)
             {

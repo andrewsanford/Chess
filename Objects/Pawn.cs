@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 
 namespace Chess.Objects
 {
+    [Serializable]
     public class Pawn : Piece
     {
         public Pawn(Color pieceColor, KeyValuePair<int, int> currentPosition) : base(pieceColor, currentPosition)
         {
             PieceColor = pieceColor;
             CurrentPosition = currentPosition;
+            Weight = 10;
 
             if (pieceColor == Color.WHITE)
             {

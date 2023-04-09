@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Chess.Objects
 {
+    [Serializable]
     public class Square
     {
         public Piece? OccupiedPiece;

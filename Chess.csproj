@@ -24,6 +24,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="Resources\BlackBishop.png" />
     <Resource Include="Resources\BlackKing.png" />
     <Resource Include="Resources\BlackKnight.png" />

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -15,6 +16,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace Chess
 {
@@ -30,6 +32,9 @@ namespace Chess
         private List<Brush> ActivePositionBrushes;
         private KeyValuePair<Button, Brush> ActiveButton;
         private BoardController GameController;
+
+        private Thread thread1;
+        private Thread thread2;
 
         public MainWindow()
         {
@@ -424,8 +429,13 @@ namespace Chess
             UpdateBoard(ActiveBoard);
         }
 
-        private void GeneralClick(Button button, KeyValuePair<int, int> position)
+        private async void GeneralClick(Button button, KeyValuePair<int, int> position)
         {
+            if (ActiveBoard[position.Key][position.Value].OccupiedPiece != null && ActiveBoard[position.Key][position.Value].OccupiedPiece.PieceColor == Objects.Color.BLACK && ActivePiece.Key == null)
+            {
+                return;
+            }
+
             if (ActiveButton.Key == button)
             {
                 CancelMove();
@@ -433,7 +443,14 @@ namespace Chess
             else if (ActivePiece.Key != null)
             {
                 UpdateBoard(GameController.MovePiece(ActiveBoard, new KeyValuePair<int, int>((int)ActivePiece.Key, ActivePiece.Value), new KeyValuePair<int, int>(position.Key, position.Value)));
+                GameController.WhiteFirstTurn = false;
                 CancelMove();
+
+                thread1 = Thread.CurrentThread;
+
+                thread2 = new Thread(() => { UpdateBoard(GameController.StartBlackTurn(ActiveBoard)); });
+                thread2.SetApartmentState(ApartmentState.STA);
+                thread2.Start();
             }
             else if(ActiveBoard[position.Key][position.Value].OccupiedPiece == null)
             {
@@ -441,11 +458,11 @@ namespace Chess
             }
             else
             {
-                ShowMoveOptions(ActiveBoard[position.Key][position.Value].OccupiedPiece.GetValidMoves(ActiveBoard), BoardButtons[position.Key][position.Value], new KeyValuePair<int?, int>(position.Key, position.Value));
+                ShowMoveOptions(ActiveBoard[position.Key][position.Value].OccupiedPiece.GetValidMoves(ActiveBoard), BoardButtons[position.Key][position.Value], new KeyValuePair<int, int>(position.Key, position.Value));
             }
         }
 
-        private void ShowMoveOptions(List<KeyValuePair<int, int>> validMoves, Button currentButton, KeyValuePair<int?, int> buttonPosition)
+        private void ShowMoveOptions(List<KeyValuePair<int, int>> validMoves, Button currentButton, KeyValuePair<int, int> buttonPosition)
         {
             //disables all buttons
             foreach(List<Button> buttonList in BoardButtons)
@@ -454,6 +471,12 @@ namespace Chess
                 {
                     button.IsEnabled = false;
                 }
+            }
+
+            //check if first turn for white
+            if (GameController.WhiteFirstTurn)
+            {
+                validMoves.Add(new KeyValuePair<int, int>(buttonPosition.Key - 2, buttonPosition.Value));
             }
 
             //re-enables relevant buttons
@@ -478,7 +501,7 @@ namespace Chess
             currentButton.Background = new SolidColorBrush(Colors.LightGreen);
 
             //set active piece
-            ActivePiece = buttonPosition;
+            ActivePiece = new KeyValuePair<int?, int>(buttonPosition.Key, buttonPosition.Value);
         }
 
         private void CancelMove()
@@ -509,6 +532,15 @@ namespace Chess
 
         public void UpdateBoard(List<List<Square>> board)
         {
+            if(Thread.CurrentThread == thread2)
+            {
+                Application.Current.Dispatcher.Invoke(() =>
+                {
+                    UpdateBoard(board);
+                });
+                thread2.Join();
+            }
+
             //set each button to appropriate chess piece image
             for (int i = 0; i < 8; i++)
             {
@@ -517,9 +549,9 @@ namespace Chess
                     if (board[i][j].OccupiedPiece != null)
                     {
                         Image tempImage = new Image();
-
                         Uri uriSource = new Uri(board[i][j].OccupiedPiece.PieceImage, UriKind.Relative);
                         tempImage.Source = new BitmapImage(uriSource);
+
 
                         BoardButtons[i][j].Content = tempImage;
                     }

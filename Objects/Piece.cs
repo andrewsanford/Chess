@@ -7,11 +7,13 @@ using System.Threading.Tasks;
 namespace Chess.Objects
 {
     public enum Color { WHITE, BLACK}
+    [Serializable]
     public abstract class Piece
     {
         public Color PieceColor;
         public KeyValuePair<int, int> CurrentPosition;
         public string PieceImage = "";
+        public int Weight;
 
         public Piece(Color pieceColor, KeyValuePair<int, int> currentPosition)
         {
