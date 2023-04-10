@@ -10,6 +10,7 @@ namespace Chess.Objects
     public class Square
     {
         public Piece? OccupiedPiece;
+        public bool underAttack;
 
         public Square()
         {

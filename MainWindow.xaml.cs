@@ -32,6 +32,7 @@ namespace Chess
         private List<Brush> ActivePositionBrushes;
         private KeyValuePair<Button, Brush> ActiveButton;
         private BoardController GameController;
+        private bool WhiteTurn;
 
         private Thread thread2;
 
@@ -43,6 +44,7 @@ namespace Chess
             ActivePositions = new List<KeyValuePair<int, int>>();
             ActivePositionBrushes = new List<Brush>();
             GameController = new BoardController(this);
+            WhiteTurn = true;
             SetStartingBoard();
         }
 
@@ -435,6 +437,11 @@ namespace Chess
                 return;
             }
 
+            if (!WhiteTurn)
+            {
+                return;
+            }
+
             if (ActiveButton.Key == button)
             {
                 CancelMove();
@@ -445,6 +452,7 @@ namespace Chess
                 GameController.WhiteFirstTurn = false;
                 CancelMove();
 
+                WhiteTurn = false;
                 thread2 = new Thread(() => { UpdateBoard(GameController.StartBlackTurn(ActiveBoard)); });
                 //thread2.SetApartmentState(ApartmentState.STA);
                 thread2.Start();
@@ -473,7 +481,10 @@ namespace Chess
             //check if first turn for white
             if (GameController.WhiteFirstTurn)
             {
-                validMoves.Add(new KeyValuePair<int, int>(buttonPosition.Key - 2, buttonPosition.Value));
+                if (ActiveBoard[buttonPosition.Key][buttonPosition.Value].OccupiedPiece.GetType() == typeof(Pawn))
+                {
+                    validMoves.Add(new KeyValuePair<int, int>(buttonPosition.Key - 2, buttonPosition.Value));
+                }      
             }
 
             //re-enables relevant buttons
@@ -535,6 +546,8 @@ namespace Chess
                 {
                     UpdateBoard(board);
                 });
+
+                WhiteTurn = true;
 
                 return;
             }

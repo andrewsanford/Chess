@@ -47,7 +47,11 @@ namespace Chess.Controllers
 
         public List<List<Square>> StartBlackTurn(List<List<Square>> startingBoard)
         {
-            bool minimaxFinished = false;
+            Thread? thread1 = null;
+            Thread? thread2 = null;
+            Thread? thread3 = null;
+            Thread? thread4 = null;
+            Thread? thread5 = null;
 
             int? highestHeuristicValue = null;
 
@@ -82,8 +86,45 @@ namespace Chess.Controllers
 
             foreach (TestedMove testedMove in testedMoves) 
             {
-                Thread thread = new Thread(() => { testedMove.FinalEvaluation = MiniMax(testedMove.Board); });
-                thread.Start();
+                CheckOpenThreads:
+
+                if(thread1 == null || !thread1.IsAlive)
+                {
+                    thread1 = new Thread(() => { testedMove.FinalEvaluation = MiniMax(testedMove.Board, 4, false, -1290, 1290); });
+                    thread1.Start();
+                    continue;
+                }
+
+                if (thread2 == null || !thread2.IsAlive)
+                {
+                    thread2 = new Thread(() => { testedMove.FinalEvaluation = MiniMax(testedMove.Board, 4, false, -1290, 1290); });
+                    thread2.Start();
+                    continue;
+                }
+
+                if (thread3 == null || !thread3.IsAlive)
+                {
+                    thread3 = new Thread(() => { testedMove.FinalEvaluation = MiniMax(testedMove.Board, 4, false, -1290, 1290); });
+                    thread3.Start();
+                    continue;
+                }
+
+                if (thread4 == null || !thread4.IsAlive)
+                {
+                    thread4 = new Thread(() => { testedMove.FinalEvaluation = MiniMax(testedMove.Board, 4, false, -1290, 1290); });
+                    thread4.Start();
+                    continue;
+                }
+
+                if (thread5 == null || !thread5.IsAlive)
+                {
+                    thread5 = new Thread(() => { testedMove.FinalEvaluation = MiniMax(testedMove.Board, 4, false, -1290, 1290); });
+                    thread5.Start();
+                    continue;
+                }
+
+                Thread.Sleep(500);
+                goto CheckOpenThreads;
             }
 
             MinimaxFinishedChecker(testedMoves);
@@ -129,9 +170,89 @@ namespace Chess.Controllers
             }
         }
 
-        private int MiniMax(List<List<Square>> board)
+        private int MiniMax(List<List<Square>> board, int depth, bool blackTurn, int alpha, int beta)
         {
-            return 0;
+            List<List<Square>> boardCopy;
+            int? evaluation = null;
+            int? minEvaluation = null;
+            int? maxEvaluation = null;
+            KeyValuePair<List<Square>, List<Square>> piecesListsByColor = GetPiecesByColor(board);
+
+            if(depth == 0)
+            {
+                return EvaluateWeights(board);
+            }
+
+            if (blackTurn)
+            {
+                foreach(Square piece in piecesListsByColor.Value)
+                {
+                    foreach(KeyValuePair<int, int> possibleMove in piece.OccupiedPiece.GetValidMoves(board))
+                    {
+                        using (var ms = new MemoryStream())
+                        {
+                            IFormatter formatter = new BinaryFormatter();
+                            formatter.Serialize(ms, board);
+                            ms.Seek(0, SeekOrigin.Begin);
+                            boardCopy = (List<List<Square>>)formatter.Deserialize(ms);
+                        }
+
+                        evaluation = MiniMax(MovePiece(boardCopy, piece.OccupiedPiece.CurrentPosition, possibleMove), depth - 1, false, alpha, beta);
+
+                        if(maxEvaluation == null)
+                        {
+                            maxEvaluation = evaluation;
+                        }
+                        else
+                        {
+                            maxEvaluation = Math.Max((int)maxEvaluation, (int)evaluation);
+                        }
+
+                        alpha = Math.Max(alpha, (int)evaluation);
+                        if (beta <= alpha)
+                        {
+                            break;
+                        }
+                    }  
+                }
+
+                return (int)maxEvaluation;
+            }
+            else
+            {
+                foreach (Square piece in piecesListsByColor.Key)
+                {
+                    foreach (KeyValuePair<int, int> possibleMove in piece.OccupiedPiece.GetValidMoves(board))
+                    {
+                        using (var ms = new MemoryStream())
+                        {
+                            IFormatter formatter = new BinaryFormatter();
+                            formatter.Serialize(ms, board);
+                            ms.Seek(0, SeekOrigin.Begin);
+                            boardCopy = (List<List<Square>>)formatter.Deserialize(ms);
+                        }
+
+                        evaluation = MiniMax(MovePiece(boardCopy, piece.OccupiedPiece.CurrentPosition, possibleMove), depth - 1, true, alpha, beta);
+
+                        if (minEvaluation == null)
+                        {
+                            minEvaluation = evaluation;
+                        }
+                        else
+                        {
+                            maxEvaluation = Math.Min((int)minEvaluation, (int)evaluation);
+                        }
+
+                        beta = Math.Min(beta, (int)evaluation);
+                        if (beta <= alpha)
+                        {
+                            break;
+                        }
+                    }
+                }
+
+                return (int)minEvaluation;
+            }
         }
 
         private int EvaluateWeights(List<List<Square>> board)

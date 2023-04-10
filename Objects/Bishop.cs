@@ -54,7 +54,7 @@ namespace Chess.Objects
 
                 if(board[CurrentPosition.Key - i][CurrentPosition.Value + i].OccupiedPiece.PieceColor != PieceColor)
                 {
-                    returnList.Add(new KeyValuePair<int, int>(CurrentPosition.Key - i, CurrentPosition.Value + i));
+                    returnList.Insert(0, new KeyValuePair<int, int>(CurrentPosition.Key - i, CurrentPosition.Value + i));
                     break;
                 }
 
@@ -84,7 +84,7 @@ namespace Chess.Objects
 
                 if (board[CurrentPosition.Key + i][CurrentPosition.Value + i].OccupiedPiece.PieceColor != PieceColor)
                 {
-                    returnList.Add(new KeyValuePair<int, int>(CurrentPosition.Key + i, CurrentPosition.Value + i));
+                    returnList.Insert(0, new KeyValuePair<int, int>(CurrentPosition.Key + i, CurrentPosition.Value + i));
                     break;
                 }
 
@@ -114,7 +114,7 @@ namespace Chess.Objects
 
                 if (board[CurrentPosition.Key + i][CurrentPosition.Value - i].OccupiedPiece.PieceColor != PieceColor)
                 {
-                    returnList.Add(new KeyValuePair<int, int>(CurrentPosition.Key + i, CurrentPosition.Value - i));
+                    returnList.Insert(0, new KeyValuePair<int, int>(CurrentPosition.Key + i, CurrentPosition.Value - i));
                     break;
                 }
 
@@ -144,7 +144,7 @@ namespace Chess.Objects
 
                 if (board[CurrentPosition.Key - i][CurrentPosition.Value - i].OccupiedPiece.PieceColor != PieceColor)
                 {
-                    returnList.Add(new KeyValuePair<int, int>(CurrentPosition.Key - i, CurrentPosition.Value - i));
+                    returnList.Insert(0, new KeyValuePair<int, int>(CurrentPosition.Key - i, CurrentPosition.Value - i));
                     break;
                 }
 
