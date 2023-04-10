@@ -33,7 +33,6 @@ namespace Chess
         private KeyValuePair<Button, Brush> ActiveButton;
         private BoardController GameController;
 
-        private Thread thread1;
         private Thread thread2;
 
         public MainWindow()
@@ -446,10 +445,8 @@ namespace Chess
                 GameController.WhiteFirstTurn = false;
                 CancelMove();
 
-                thread1 = Thread.CurrentThread;
-
                 thread2 = new Thread(() => { UpdateBoard(GameController.StartBlackTurn(ActiveBoard)); });
-                thread2.SetApartmentState(ApartmentState.STA);
+                //thread2.SetApartmentState(ApartmentState.STA);
                 thread2.Start();
             }
             else if(ActiveBoard[position.Key][position.Value].OccupiedPiece == null)
@@ -538,9 +535,12 @@ namespace Chess
                 {
                     UpdateBoard(board);
                 });
-                thread2.Join();
+
+                return;
             }
 
+            ActiveBoard = board;
+            
             //set each button to appropriate chess piece image
             for (int i = 0; i < 8; i++)
             {
@@ -552,11 +552,11 @@ namespace Chess
                         Uri uriSource = new Uri(board[i][j].OccupiedPiece.PieceImage, UriKind.Relative);
                         tempImage.Source = new BitmapImage(uriSource);
 
-
                         BoardButtons[i][j].Content = tempImage;
                     }
                     else
                     {
+
                         BoardButtons[i][j].Content = null;
                     }
                 }
