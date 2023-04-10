@@ -33,6 +33,7 @@ namespace Chess
         private KeyValuePair<Button, Brush> ActiveButton;
         private BoardController GameController;
         private bool WhiteTurn;
+        private bool GameOver;
 
         private Thread thread2;
 
@@ -45,6 +46,8 @@ namespace Chess
             ActivePositionBrushes = new List<Brush>();
             GameController = new BoardController(this);
             WhiteTurn = true;
+            cmbDifficulty.SelectedIndex = 0;
+            prgTurnProgress.Visibility = Visibility.Hidden;
             SetStartingBoard();
         }
 
@@ -427,6 +430,15 @@ namespace Chess
             ActiveBoard[6][6].OccupiedPiece = new Pawn(Objects.Color.WHITE, new KeyValuePair<int, int>(6, 6));
             ActiveBoard[6][7].OccupiedPiece = new Pawn(Objects.Color.WHITE, new KeyValuePair<int, int>(6, 7));
 
+            //empty setup
+            for(int i = 2; i < 6; i++)
+            {
+                for(int j = 0; j < 8; j++)
+                {
+                    ActiveBoard[i][j].OccupiedPiece = null;
+                }
+            }
+
             UpdateBoard(ActiveBoard);
         }
 
@@ -452,10 +464,16 @@ namespace Chess
                 GameController.WhiteFirstTurn = false;
                 CancelMove();
 
-                WhiteTurn = false;
-                thread2 = new Thread(() => { UpdateBoard(GameController.StartBlackTurn(ActiveBoard)); });
-                //thread2.SetApartmentState(ApartmentState.STA);
-                thread2.Start();
+                if (!GameOver)
+                {
+                    WhiteTurn = false;
+                    txtCurrentTurn.Text = "Black";
+                    prgTurnProgress.Visibility = Visibility.Visible;
+                    int difficultySelecter = (cmbDifficulty.SelectedIndex + 1) * 2;
+                    thread2 = new Thread(() => { UpdateBoard(GameController.StartBlackTurn(ActiveBoard, difficultySelecter)); });
+                    thread2.Start();
+                }
+                
             }
             else if(ActiveBoard[position.Key][position.Value].OccupiedPiece == null)
             {
@@ -540,10 +558,16 @@ namespace Chess
 
         public void UpdateBoard(List<List<Square>> board)
         {
-            if(Thread.CurrentThread == thread2)
+            bool whiteKingDead = true;
+            bool blackKingDead = true;
+
+            if (Thread.CurrentThread == thread2)
             {
                 Application.Current.Dispatcher.Invoke(() =>
                 {
+                    txtCurrentTurn.Text = "White";
+                    prgTurnProgress.Value = 0;
+                    prgTurnProgress.Visibility = Visibility.Hidden;
                     UpdateBoard(board);
                 });
 
@@ -566,6 +590,19 @@ namespace Chess
                         tempImage.Source = new BitmapImage(uriSource);
 
                         BoardButtons[i][j].Content = tempImage;
+
+                        if (board[i][j].OccupiedPiece.GetType() == typeof(King))
+                        {
+                            if(board[i][j].OccupiedPiece.PieceColor == Objects.Color.WHITE)
+                            {
+                                whiteKingDead = false;
+                            }
+                            else
+                            {
+                                blackKingDead = false;
+                            }
+                            
+                        }
                     }
                     else
                     {
@@ -574,8 +611,45 @@ namespace Chess
                     }
                 }
             }
+
+            if(whiteKingDead || blackKingDead)
+            {
+                GameOver = true;
+                EndGame();
+            }
         }
 
+        private void EndGame()
+        {
+            foreach (List<Button> buttonList in BoardButtons)
+            {
+                foreach (Button button in buttonList)
+                {
+                    button.IsEnabled = false;
+                }
+            }
 
+            txtGameOver.Visibility = Visibility.Visible;
+            btnNewGame.Visibility = Visibility.Visible;
+        }
+
+        private void btnNewGame_Click(object sender, RoutedEventArgs e)
+        {
+            txtGameOver.Visibility = Visibility.Hidden;
+            btnNewGame.Visibility = Visibility.Hidden;
+
+            GameController.WhiteFirstTurn = true;
+            GameOver = false;
+
+            foreach (List<Button> buttonList in BoardButtons)
+            {
+                foreach (Button button in buttonList)
+                {
+                    button.IsEnabled = true;
+                }
+            }
+
+            SetStartingBoard();
+        }
     }
 }

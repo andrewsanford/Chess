@@ -11,6 +11,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Documents;
 using System.Xml.Linq;
+using System.Windows;
+using System.Diagnostics.Metrics;
 
 namespace Chess.Controllers
 {
@@ -45,7 +47,7 @@ namespace Chess.Controllers
             return board;
         }
 
-        public List<List<Square>> StartBlackTurn(List<List<Square>> startingBoard)
+        public List<List<Square>> StartBlackTurn(List<List<Square>> startingBoard, int depth)
         {
             Thread? thread1 = null;
             Thread? thread2 = null;
@@ -82,7 +84,15 @@ namespace Chess.Controllers
                     testMove.Board = MovePiece(boardCopy, blackSquare.OccupiedPiece.CurrentPosition, blackMove);
                     testMove.BoardsEvaluation = EvaluateWeights(testMove.Board);     
                 }
-            }        
+            }
+
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                GameWindow.prgTurnProgress.Maximum = testedMoves.Count;
+            });
+
+            Thread progressCheckerThread = new Thread(() => { MinimaxFinishedChecker(testedMoves); });
+            progressCheckerThread.Start();
 
             foreach (TestedMove testedMove in testedMoves) 
             {
@@ -90,35 +100,35 @@ namespace Chess.Controllers
 
                 if(thread1 == null || !thread1.IsAlive)
                 {
-                    thread1 = new Thread(() => { testedMove.FinalEvaluation = MiniMax(testedMove.Board, 4, false, -1290, 1290); });
+                    thread1 = new Thread(() => { testedMove.FinalEvaluation = MiniMax(testedMove.Board, depth - 1, false, -1290, 1290); });
                     thread1.Start();
                     continue;
                 }
 
                 if (thread2 == null || !thread2.IsAlive)
                 {
-                    thread2 = new Thread(() => { testedMove.FinalEvaluation = MiniMax(testedMove.Board, 4, false, -1290, 1290); });
+                    thread2 = new Thread(() => { testedMove.FinalEvaluation = MiniMax(testedMove.Board, depth - 1, false, -1290, 1290); });
                     thread2.Start();
                     continue;
                 }
 
                 if (thread3 == null || !thread3.IsAlive)
                 {
-                    thread3 = new Thread(() => { testedMove.FinalEvaluation = MiniMax(testedMove.Board, 4, false, -1290, 1290); });
+                    thread3 = new Thread(() => { testedMove.FinalEvaluation = MiniMax(testedMove.Board, depth - 1, false, -1290, 1290); });
                     thread3.Start();
                     continue;
                 }
 
                 if (thread4 == null || !thread4.IsAlive)
                 {
-                    thread4 = new Thread(() => { testedMove.FinalEvaluation = MiniMax(testedMove.Board, 4, false, -1290, 1290); });
+                    thread4 = new Thread(() => { testedMove.FinalEvaluation = MiniMax(testedMove.Board, depth - 1, false, -1290, 1290); });
                     thread4.Start();
                     continue;
                 }
 
                 if (thread5 == null || !thread5.IsAlive)
                 {
-                    thread5 = new Thread(() => { testedMove.FinalEvaluation = MiniMax(testedMove.Board, 4, false, -1290, 1290); });
+                    thread5 = new Thread(() => { testedMove.FinalEvaluation = MiniMax(testedMove.Board, depth - 1, false, -1290, 1290); });
                     thread5.Start();
                     continue;
                 }
@@ -127,9 +137,9 @@ namespace Chess.Controllers
                 goto CheckOpenThreads;
             }
 
-            MinimaxFinishedChecker(testedMoves);
+            progressCheckerThread.Join();
 
-            foreach(TestedMove testedMove in testedMoves)
+            foreach (TestedMove testedMove in testedMoves)
             {
                 if(highestHeuristicValue == null)
                 {
@@ -152,10 +162,13 @@ namespace Chess.Controllers
         private void MinimaxFinishedChecker(List<TestedMove> testedMoves)
         {
             bool minimaxFinished = false;
+            int counter = 0;
 
             while(!minimaxFinished)
             {
-                Thread.Sleep(500);
+                counter = 0;
+
+                Thread.Sleep(100);
 
                 minimaxFinished = true;
 
@@ -164,9 +177,17 @@ namespace Chess.Controllers
                     if (testedMove.FinalEvaluation == null)
                     {
                         minimaxFinished = false;
-                        break;
+                    }
+                    else
+                    {
+                        counter++;
                     }
                 }
+
+                Application.Current.Dispatcher.Invoke(() =>
+                {
+                    GameWindow.prgTurnProgress.Value = counter;
+                });
             }
         }
 

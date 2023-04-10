@@ -33,6 +33,85 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
+        <TextBlock
+            Grid.Row="0"
+            Grid.Column="8"
+            Grid.ColumnSpan="3"
+            Text="Game Controls"
+            Foreground="White"
+            FontSize="40"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            FontStyle="Italic"/>
+
+        <TextBlock
+            Grid.Row="2"
+            Grid.Column="8"
+            Grid.ColumnSpan="2"
+            Text="Difficulty:"
+            Foreground="White"
+            FontSize="30"
+            VerticalAlignment="Bottom"
+            HorizontalAlignment="Left"
+            FontStyle="Italic"/>
+
+        <TextBlock
+            Grid.Row="4"
+            Grid.Column="8"
+            Grid.ColumnSpan="2"
+            Text="Current Turn:"
+            Foreground="White"
+            FontSize="30"
+            VerticalAlignment="Bottom"
+            HorizontalAlignment="Left"
+            FontStyle="Italic"/>
+
+        <TextBlock
+            Grid.Row="6"
+            Grid.Column="8"
+            Grid.ColumnSpan="2"
+            Text="Turn Progress:"
+            Foreground="White"
+            FontSize="30"
+            VerticalAlignment="Bottom"
+            HorizontalAlignment="Left"
+            FontStyle="Italic"/>
+
+        <ComboBox
+            x:Name="cmbDifficulty"
+            Grid.Row="3"
+            Grid.Column="8"
+            Grid.ColumnSpan="3"
+            Margin="20"
+            FontSize="20"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center">
+            <ComboBoxItem Content="Easy (depth 2)"/>
+            <ComboBoxItem Content="Medium (depth 4)"/>
+            <ComboBoxItem Content="Hard (depth 6)"/>
+        </ComboBox>
+
+        <TextBlock
+            x:Name="txtCurrentTurn"
+            Grid.Row="5"
+            Grid.Column="8"
+            Grid.ColumnSpan="3"
+            Text="White"
+            Foreground="White"
+            FontSize="40"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            FontStyle="Italic"/>
+
+        <ProgressBar
+            x:Name="prgTurnProgress"
+            Grid.Row="7"
+            Grid.Column="8"
+            Grid.ColumnSpan="3"
+            Margin="20"/>
+
+        
+
         <Button
             x:Name="Space00"
             Grid.Row="0"
@@ -481,6 +560,31 @@
             Margin="5"
             Background="White" Click="Space77_Click"
             />
+
+        <TextBlock
+            x:Name="txtGameOver"
+            Grid.Row="2"
+            Grid.Column="1"
+            Grid.RowSpan="2"
+            Grid.ColumnSpan="6"
+            Text="Game Over"
+            FontSize="120"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            Foreground="Red"
+            Visibility="Hidden"/>
+        
+        <Button
+            x:Name="btnNewGame"
+            Grid.Row="4"
+            Grid.Column="3"
+            Grid.ColumnSpan="2"
+            Background="#212121"
+            Foreground="White"
+            Content="New Game"
+            FontSize="40" 
+            Visibility="Hidden"
+            Click="btnNewGame_Click"/>
 
     </Grid>
 </Window>
