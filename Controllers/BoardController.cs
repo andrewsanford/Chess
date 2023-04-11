@@ -261,7 +261,7 @@ namespace Chess.Controllers
                         }
                         else
                         {
-                            maxEvaluation = Math.Min((int)minEvaluation, (int)evaluation);
+                            minEvaluation = Math.Min((int)minEvaluation, (int)evaluation);
                         }
 
                         beta = Math.Min(beta, (int)evaluation);
