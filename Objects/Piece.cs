@@ -10,6 +10,7 @@ namespace Chess.Objects
     [Serializable]
     public abstract class Piece
     {
+        public bool firstTurn;
         public Color PieceColor;
         public KeyValuePair<int, int> CurrentPosition;
         public string PieceImage = "";

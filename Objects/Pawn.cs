@@ -11,6 +11,7 @@ namespace Chess.Objects
     {
         public Pawn(Color pieceColor, KeyValuePair<int, int> currentPosition) : base(pieceColor, currentPosition)
         {
+            firstTurn = true;
             PieceColor = pieceColor;
             CurrentPosition = currentPosition;
             Weight = 10;
@@ -48,6 +49,11 @@ namespace Chess.Objects
                 {
                     returnList.Insert(0, new KeyValuePair<int, int>(CurrentPosition.Key - 1, CurrentPosition.Value - 1));
                 }
+
+                if (firstTurn && board[CurrentPosition.Key - 2][CurrentPosition.Value].OccupiedPiece == null)
+                {
+                    returnList.Add(new KeyValuePair<int, int>(CurrentPosition.Key - 2, CurrentPosition.Value));
+                }
             }
             else
             {
@@ -67,6 +73,11 @@ namespace Chess.Objects
                 if ((CurrentPosition.Key + 1) <= 7 && (CurrentPosition.Value - 1) >= 0 && board[CurrentPosition.Key + 1][CurrentPosition.Value - 1].OccupiedPiece != null && board[CurrentPosition.Key + 1][CurrentPosition.Value - 1].OccupiedPiece.PieceColor == Color.WHITE)
                 {
                     returnList.Insert(0, new KeyValuePair<int, int>(CurrentPosition.Key + 1, CurrentPosition.Value - 1));
+                }
+
+                if (firstTurn && board[CurrentPosition.Key + 2][CurrentPosition.Value].OccupiedPiece == null)
+                {
+                    returnList.Add(new KeyValuePair<int, int>(CurrentPosition.Key + 2, CurrentPosition.Value));
                 }
             }
 

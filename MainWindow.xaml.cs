@@ -471,6 +471,11 @@ namespace Chess
 
                 if (!GameOver)
                 {
+                    if (ActiveBoard[position.Key][position.Value].OccupiedPiece.GetType() == typeof(Pawn) && ActiveBoard[position.Key][position.Value].OccupiedPiece.firstTurn)
+                    {
+                        ActiveBoard[position.Key][position.Value].OccupiedPiece.firstTurn = false;
+                    }
+
                     WhiteTurn = false;
                     txtCurrentTurn.Text = "Black";
                     prgTurnProgress.Visibility = Visibility.Visible;
@@ -502,13 +507,7 @@ namespace Chess
             }*/
 
             //check if first turn for white
-            if (GameController.WhiteFirstTurn)
-            {
-                if (ActiveBoard[buttonPosition.Key][buttonPosition.Value].OccupiedPiece.GetType() == typeof(Pawn))
-                {
-                    validMoves.Add(new KeyValuePair<int, int>(buttonPosition.Key - 2, buttonPosition.Value));
-                }      
-            }
+            
 
             //re-enables relevant buttons
             ActivePositions = validMoves;
