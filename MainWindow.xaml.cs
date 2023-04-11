@@ -442,7 +442,7 @@ namespace Chess
             UpdateBoard(ActiveBoard);
         }
 
-        private async void GeneralClick(Button button, KeyValuePair<int, int> position)
+        private void GeneralClick(Button button, KeyValuePair<int, int> position)
         {
             if (ActiveBoard[position.Key][position.Value].OccupiedPiece != null && ActiveBoard[position.Key][position.Value].OccupiedPiece.PieceColor == Objects.Color.BLACK && ActivePiece.Key == null)
             {
@@ -460,6 +460,11 @@ namespace Chess
             }
             else if (ActivePiece.Key != null)
             {
+                if(((SolidColorBrush)button.Background).Color != Colors.Red && ((SolidColorBrush)button.Background).Color != Colors.Aqua && ((SolidColorBrush)button.Background).Color != Colors.LightGreen)
+                {
+                    return;
+                }
+
                 UpdateBoard(GameController.MovePiece(ActiveBoard, new KeyValuePair<int, int>((int)ActivePiece.Key, ActivePiece.Value), new KeyValuePair<int, int>(position.Key, position.Value)));
                 GameController.WhiteFirstTurn = false;
                 CancelMove();
@@ -488,13 +493,13 @@ namespace Chess
         private void ShowMoveOptions(List<KeyValuePair<int, int>> validMoves, Button currentButton, KeyValuePair<int, int> buttonPosition)
         {
             //disables all buttons
-            foreach(List<Button> buttonList in BoardButtons)
+            /*foreach(List<Button> buttonList in BoardButtons)
             {
                 foreach (Button button in buttonList)
                 {
                     button.IsEnabled = false;
                 }
-            }
+            }*/
 
             //check if first turn for white
             if (GameController.WhiteFirstTurn)
@@ -509,7 +514,7 @@ namespace Chess
             ActivePositions = validMoves;
             foreach(KeyValuePair<int, int> position in validMoves)
             {
-                BoardButtons[position.Key][position.Value].IsEnabled = true;
+                //BoardButtons[position.Key][position.Value].IsEnabled = true;
                 ActivePositionBrushes.Add(BoardButtons[position.Key][position.Value].Background);
 
                 if(ActiveBoard[position.Key][position.Value].OccupiedPiece != null)
@@ -522,7 +527,7 @@ namespace Chess
                 } 
             }
 
-            currentButton.IsEnabled = true;
+            //currentButton.IsEnabled = true;
             ActiveButton = new KeyValuePair<Button, Brush>(currentButton, currentButton.Background);
             currentButton.Background = new SolidColorBrush(Colors.LightGreen);
 
