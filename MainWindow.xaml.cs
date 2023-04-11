@@ -496,24 +496,10 @@ namespace Chess
         }
 
         private void ShowMoveOptions(List<KeyValuePair<int, int>> validMoves, Button currentButton, KeyValuePair<int, int> buttonPosition)
-        {
-            //disables all buttons
-            /*foreach(List<Button> buttonList in BoardButtons)
-            {
-                foreach (Button button in buttonList)
-                {
-                    button.IsEnabled = false;
-                }
-            }*/
-
-            //check if first turn for white
-            
-
-            //re-enables relevant buttons
+        { 
             ActivePositions = validMoves;
             foreach(KeyValuePair<int, int> position in validMoves)
             {
-                //BoardButtons[position.Key][position.Value].IsEnabled = true;
                 ActivePositionBrushes.Add(BoardButtons[position.Key][position.Value].Background);
 
                 if(ActiveBoard[position.Key][position.Value].OccupiedPiece != null)
@@ -526,7 +512,6 @@ namespace Chess
                 } 
             }
 
-            //currentButton.IsEnabled = true;
             ActiveButton = new KeyValuePair<Button, Brush>(currentButton, currentButton.Background);
             currentButton.Background = new SolidColorBrush(Colors.LightGreen);
 
