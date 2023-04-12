@@ -35,6 +35,29 @@ namespace Chess.Controllers
             board[endingPosition.Key][endingPosition.Value].OccupiedPiece.CurrentPosition = endingPosition;
             board[startingPosition.Key][startingPosition.Value].OccupiedPiece = null;
 
+            if (board[endingPosition.Key][endingPosition.Value].OccupiedPiece.GetType() == typeof(Pawn) && board[endingPosition.Key][endingPosition.Value].OccupiedPiece.PieceColor == Color.WHITE && endingPosition.Key == 0)
+            {
+                board[endingPosition.Key][endingPosition.Value].OccupiedPiece = new Queen(Color.WHITE, endingPosition);
+            }
+            else if (board[endingPosition.Key][endingPosition.Value].OccupiedPiece.GetType() == typeof(Pawn) && board[endingPosition.Key][endingPosition.Value].OccupiedPiece.PieceColor == Color.BLACK && endingPosition.Key == 7)
+            {
+                board[endingPosition.Key][endingPosition.Value].OccupiedPiece = new Queen(Color.BLACK, endingPosition);
+            }
+
+            return board;
+        }
+
+        public List<List<Square>> MovePiece(List<List<Square>> board, KeyValuePair<int, int> startingPosition, KeyValuePair<int, int> endingPosition, ref bool blackKingDead)
+        {
+            if(board[endingPosition.Key][endingPosition.Value].OccupiedPiece != null && board[endingPosition.Key][endingPosition.Value].OccupiedPiece.GetType() == typeof(King) && board[endingPosition.Key][endingPosition.Value].OccupiedPiece.PieceColor == Color.BLACK)
+            {
+                blackKingDead = true;
+            }
+
+            board[endingPosition.Key][endingPosition.Value].OccupiedPiece = board[startingPosition.Key][startingPosition.Value].OccupiedPiece;
+            board[endingPosition.Key][endingPosition.Value].OccupiedPiece.CurrentPosition = endingPosition;
+            board[startingPosition.Key][startingPosition.Value].OccupiedPiece = null;
+
             if(board[endingPosition.Key][endingPosition.Value].OccupiedPiece.GetType() == typeof(Pawn) && board[endingPosition.Key][endingPosition.Value].OccupiedPiece.PieceColor == Color.WHITE && endingPosition.Key == 0)
             {
                 board[endingPosition.Key][endingPosition.Value].OccupiedPiece = new Queen(Color.WHITE, endingPosition);
@@ -46,6 +69,8 @@ namespace Chess.Controllers
 
             return board;
         }
+
+
 
         public List<List<Square>> StartBlackTurn(List<List<Square>> startingBoard, int depth)
         {
@@ -210,6 +235,7 @@ namespace Chess.Controllers
                 {
                     foreach(KeyValuePair<int, int> possibleMove in piece.OccupiedPiece.GetValidMoves(board))
                     {
+                        bool blackKingDead = false;
                         using (var ms = new MemoryStream())
                         {
                             IFormatter formatter = new BinaryFormatter();
@@ -218,7 +244,16 @@ namespace Chess.Controllers
                             boardCopy = (List<List<Square>>)formatter.Deserialize(ms);
                         }
 
-                        evaluation = MiniMax(MovePiece(boardCopy, piece.OccupiedPiece.CurrentPosition, possibleMove), depth - 1, false, alpha, beta);
+                        List<List<Square>> tempBoard = MovePiece(boardCopy, piece.OccupiedPiece.CurrentPosition, possibleMove, ref blackKingDead);
+
+                        if (blackKingDead)
+                        {
+                            evaluation = -1290;
+                        }
+                        else
+                        {
+                            evaluation = MiniMax(tempBoard, depth - 1, false, alpha, beta);
+                        }       
 
                         if(maxEvaluation == null)
                         {
